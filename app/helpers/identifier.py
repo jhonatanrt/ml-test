@@ -1,12 +1,9 @@
 from __future__ import print_function
 
-
-
 import json
 import base64
 
 print('loading function ...')
-
 
 def lambda_handler(event, context):
     # result = serialize.decode('base64')
