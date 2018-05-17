@@ -26,6 +26,9 @@ def make_Dictionary(root_dir):
 
     return directory
 
+def prueba():
+    print('hola!')
+    
 
-print('hola!')
-make_Dictionary('.//test-mails//8-899msg1.txt')
+
+# make_Dictionary('.//test-mails//8-899msg1.txt')
