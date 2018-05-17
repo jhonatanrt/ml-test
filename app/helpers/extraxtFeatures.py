@@ -13,7 +13,6 @@ def make_Dictionary(root_dir):
                 words = line.split()
                 all_words += words
     dictionary = Counter(all_words)
-    print("dictionary", dictionary)
     list_to_remove = list(dictionary)
 
     for item in list_to_remove:
@@ -56,7 +55,6 @@ def prueba():
     TRAIN_DIR = "./train-mails"
     TEST_DIR = "./test-mails"
     dictionary = make_Dictionary(TRAIN_DIR)
-    print(dictionary)
     features_matrix, labels = extract_features(TRAIN_DIR, dictionary)
     test_feature_matrix, test_labels = extract_features(TEST_DIR, dictionary)
 
