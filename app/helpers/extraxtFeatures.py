@@ -1,8 +1,22 @@
 import os
 import numpy as np
+import cPickle
+import gzip
 from collections import Counter
 from sklearn.naive_bayes import GaussianNB
+from sklearn import svm
 from sklearn.metrics import accuracy_score
+
+def load(file_name):
+    stream = gzip.open(file_name, "rb")
+    model = cPickle.load(stream)
+    stream.close()
+    return model
+
+def save(file_name):
+    stream = gzip.open(file_name, "wb")
+    cPickle.dump(model, stream)
+    stream.close()
 
 def make_Dictionary(root_dir):
     all_words = []
@@ -58,7 +72,10 @@ def prueba():
     features_matrix, labels = extract_features(TRAIN_DIR, dictionary)
     test_feature_matrix, test_labels = extract_features(TEST_DIR, dictionary)
 
-    model = GaussianNB()
+    # features_matrix = features_matrix[:len(features_matrix)/10]
+    # labels = labels[:len(labels)/10]
+    # model = GaussianNB()
+    model = svm.SVC(kernel="rbf", C=100, gamma=0.001)
 
     print "Training model"
     model.fit(features_matrix, labels)
